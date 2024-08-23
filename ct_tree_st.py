@@ -4,10 +4,8 @@ import plotly.express as px
 import pandas as pd
 
 # Paths to your files
-fpath0 = '/Users/tingso/Dropbox/Projects/Business/ClimateTRACE/'
-fpath = fpath0 + 'Program/Streamlit/ct_map/'
 fname = 'ct_treemap_data.csv'
-df = pd.read_csv(fpath + fname)
+df = pd.read_csv(fname)
 
 # Define all levels
 all_levels = ['sector', 'subsector', 'iso3_country']
