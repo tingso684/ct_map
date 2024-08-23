@@ -3,72 +3,81 @@ import plotly.express as px
 import pandas as pd
 import os
 
-# Load the data from the CSV file
+# Load the CSV files from the current directory
 csv_directory = '.'  # Current directory
 csv_files = [f for f in os.listdir(csv_directory) if f.endswith('.csv')]
 
-if 'selected_file' not in st.session_state:
-    st.session_state.selected_file = csv_files[0]
+# Ensure there's at least one CSV file
+if not csv_files:
+    st.error("No CSV files found in the directory.")
+else:
+    # Initialize session state variables if they don't exist
+    if 'selected_file' not in st.session_state:
+        st.session_state.selected_file = csv_files[0]
+    if 'selected_country' not in st.session_state:
+        st.session_state.selected_country = None
+    if 'selected_sector' not in st.session_state:
+        st.session_state.selected_sector = None
 
-selected_file = st.selectbox("Select a CSV file", options=csv_files)
+    # File selection dropdown
+    selected_file = st.selectbox("Select a CSV file", options=csv_files, index=csv_files.index(st.session_state.selected_file))
 
-if selected_file != st.session_state.selected_file:
-    st.session_state.fname = selected_file
-    st.session_state.selected_country = None
-    st.session_state.selected_sector = None
-    st.experimental_rerun()
+    # If a new file is selected, update the session state and reset selections
+    if selected_file != st.session_state.selected_file:
+        st.session_state.selected_file = selected_file
+        st.session_state.selected_country = None
+        st.session_state.selected_sector = None
+        st.experimental_rerun()
 
-# fname = 'ct_treemap_data.csv'
-df = pd.read_csv(selected_file)
+    # Load the DataFrame
+    df = pd.read_csv(os.path.join(csv_directory, selected_file))
 
-# formatting function for fig
-def generate_fig(data, path, value, color):
-    fig = px.treemap(data, path=path, values=value, color=color,
-                            title=f'Treemap for Climate TRACE data')
+    # Formatting function for generating a treemap figure
+    def generate_fig(data, path, value, color):
+        fig = px.treemap(data, path=path, values=value, color=color,
+                         title=f'Treemap for {st.session_state.selected_file}')
 
-    # Update the layout and traces of the treemap
-    fig.update_layout(
-        margin=dict(t=0, l=0, b=0, r=0),  # Remove margins around the treemap
-        paper_bgcolor='white',  # Background color of the paper
-        uniformtext_minsize=10,  # Minimum text size for labels
-        uniformtext_mode='hide',  # Hide text if it doesn't fit
-        clickmode='event+select'
-    )
-    fig.update_traces(
-        hovertemplate='%{label}<br>Value: %{value}<br>Percent of Total: %{percent.entry:.2%}',
-        textinfo='label+percent entry+value',
-        textfont_size=10,
-        marker=dict(
-            line=dict(width=0)  # Reduce outline width
+        fig.update_layout(
+            margin=dict(t=0, l=0, b=0, r=0),  # Remove margins around the treemap
+            paper_bgcolor='white',  # Background color of the paper
+            uniformtext_minsize=10,  # Minimum text size for labels
+            uniformtext_mode='hide',  # Hide text if it doesn't fit
+            clickmode='event+select'
         )
-    )
-    return fig
+        fig.update_traces(
+            hovertemplate='%{label}<br>Value: %{value}<br>Percent of Total: %{percent.entry:.2%}',
+            textinfo='label+percent entry+value',
+            textfont_size=10,
+            marker=dict(
+                line=dict(width=0)  # Reduce outline width
+            )
+        )
+        return fig
 
-# Section 1: Treemap by Sector
-st.header("Treemap by Sector")
-sector_list = df['sector'].unique()
+    # Section 1: Treemap by Sector
+    st.header("Treemap by Sector")
+    fig_all = generate_fig(df, ['sector', 'subsector'], 'co2e_100yr', 'continent_ct')
+    st.plotly_chart(fig_all, use_container_width=True)
 
-fig = generate_fig(df, ['sector', 'subsector'], 'co2e_100yr', 'continent_ct')
-st.plotly_chart(fig, use_container_width=True)
+    # Section 2: Treemap by Sector/Country
+    st.header("Treemap by Sector/Country")
+    sector_list = df['sector'].unique()
+    selected_sector = st.selectbox("Select a Sector", options=sector_list, index=0 if st.session_state.selected_sector is None else sector_list.tolist().index(st.session_state.selected_sector))
+    st.session_state.selected_sector = selected_sector
 
-# Section 1: Treemap by Sector
-st.header("Treemap by Sector/Country")
-sector_list = df['sector'].unique()
-selected_sector = st.selectbox("Select a Sector", options=sector_list)
-filtered_df_sector = df[df['sector'] == selected_sector]
+    filtered_df_sector = df[df['sector'] == selected_sector]
+    fig_sector = generate_fig(filtered_df_sector, ['sector', 'subsector', 'iso3_country'], 'co2e_100yr', 'continent_ct')
+    st.plotly_chart(fig_sector, use_container_width=True)
 
-fig = generate_fig(filtered_df_sector, ['sector', 'subsector', 'iso3_country'], 'co2e_100yr', 'continent_ct')
-st.plotly_chart(fig, use_container_width=True)
+    # Section 3: Treemap by Country/Sector
+    st.header("Treemap by Country/Sector")
+    country_list = df['iso3_country'].unique()
+    selected_country = st.selectbox("Select a Country", options=country_list, index=0 if st.session_state.selected_country is None else country_list.tolist().index(st.session_state.selected_country))
+    st.session_state.selected_country = selected_country
 
-# Section 2: Treemap by Country
-st.header("Treemap by Country/Sector")
-country_list = df['iso3_country'].unique()
-selected_country = st.selectbox("Select a Country", options=country_list)
-filtered_df_country = df[df['iso3_country'] == selected_country]
-
-fig = generate_fig(filtered_df_country, ['iso3_country','sector', 'subsector'], 'co2e_100yr', 'continent_ct')
-st.plotly_chart(fig, use_container_width=True)
-
+    filtered_df_country = df[df['iso3_country'] == selected_country]
+    fig_country = generate_fig(filtered_df_country, ['iso3_country', 'sector', 'subsector'], 'co2e_100yr', 'continent_ct')
+    st.plotly_chart(fig_country, use_container_width=True)
 
 # import pandas as pd
 # import streamlit as st
