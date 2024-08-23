@@ -1,31 +1,4 @@
 ### Steamlit
-
-
-import pandas as pd 
-import numpy as np 
-import logging
-import os
-from datetime import datetime
-import time
-from numpy import insert
-import requests
-import json
-import pickle
-import xmltodict
-import gzip
-from tqdm.notebook import tqdm
-import warnings
-
-from concurrent.futures import ProcessPoolExecutor, as_completed
-import concurrent.futures
-from multiprocessing import Manager, Queue, Process
-
-import plotly.graph_objects as go
-import plotly.offline
-from plotly.subplots import make_subplots
-
-import plotly.express as px
-
 import streamlit as st
 import plotly.express as px
 import pandas as pd
@@ -36,7 +9,7 @@ fpath0 = '/Users/tingso/Dropbox/Projects/Business/ClimateTRACE/'
 # Replace with your actual path and file name
 fpath = fpath0 + 'Program/Streamlit/ct_map/'
 fname = 'ct_treemap_data.csv'
-df = pd.read_csv(fpath + fname)
+df = pd.read_csv(fname)
 
 # Define all levels
 all_levels = ['sector', 'subsector', 'iso3_country']
