@@ -1,0 +1,274 @@
+,sector,subsector,iso3_country,co2e_100yr,continent_ct
+0,fossil-fuel-operations,coal-mining,AFG,153379,Asia
+1,waste,solid-waste-disposal,AGO,386270,Africa
+2,fossil-fuel-operations,coal-mining,ALB,18381,Europe
+3,mineral-extraction,copper-mining,ALB,17483,Europe
+4,waste,solid-waste-disposal,ALB,51703,Europe
+5,waste,solid-waste-disposal,AND,71485,Europe
+6,waste,solid-waste-disposal,ARE,342827,Asia
+7,fossil-fuel-operations,coal-mining,ARG,9897,South America
+8,mineral-extraction,copper-mining,ARG,57190,South America
+9,waste,solid-waste-disposal,ARG,208257,South America
+10,mineral-extraction,copper-mining,ARM,413715,Asia
+11,waste,solid-waste-disposal,ARM,253019,Asia
+12,fossil-fuel-operations,coal-mining,AUS,794490,Oceania
+13,mineral-extraction,copper-mining,AUS,99169,Oceania
+14,waste,solid-waste-disposal,AUS,126764,Oceania
+15,waste,solid-waste-disposal,AUT,13032,Europe
+16,mineral-extraction,copper-mining,AZE,52297,Asia
+17,waste,solid-waste-disposal,BEL,6094,Europe
+18,waste,solid-waste-disposal,BEN,7188,Africa
+19,waste,solid-waste-disposal,BFA,16166,Africa
+20,fossil-fuel-operations,coal-mining,BGD,269734,Asia
+21,waste,solid-waste-disposal,BGD,378194,Asia
+22,fossil-fuel-operations,coal-mining,BGR,191838,Europe
+23,mineral-extraction,copper-mining,BGR,50282,Europe
+24,waste,solid-waste-disposal,BGR,55995,Europe
+25,fossil-fuel-operations,coal-mining,BIH,99011,Europe
+26,waste,solid-waste-disposal,BIH,373126,Europe
+27,waste,solid-waste-disposal,BLR,79065,Europe
+28,waste,solid-waste-disposal,BLZ,152229,North America
+29,mineral-extraction,copper-mining,BOL,2266,South America
+30,waste,solid-waste-disposal,BOL,326904,South America
+31,fossil-fuel-operations,coal-mining,BRA,44399,South America
+32,mineral-extraction,copper-mining,BRA,106869,South America
+33,waste,solid-waste-disposal,BRA,176666,South America
+34,waste,solid-waste-disposal,BRN,3066,Asia
+35,fossil-fuel-operations,coal-mining,BTN,1005,Asia
+36,fossil-fuel-operations,coal-mining,BWA,143363,Africa
+37,mineral-extraction,copper-mining,BWA,94675,Africa
+38,waste,solid-waste-disposal,BWA,216843,Africa
+39,fossil-fuel-operations,coal-mining,CAN,395320,North America
+40,mineral-extraction,copper-mining,CAN,140894,North America
+41,waste,solid-waste-disposal,CAN,64970,North America
+42,waste,solid-waste-disposal,CHE,784,Europe
+43,mineral-extraction,copper-mining,CHL,292227,South America
+44,waste,solid-waste-disposal,CHL,348249,South America
+45,fossil-fuel-operations,coal-mining,CHN,852813,Asia
+46,mineral-extraction,copper-mining,CHN,212856,Asia
+47,waste,solid-waste-disposal,CHN,95850,Asia
+48,waste,solid-waste-disposal,CMR,276882,Africa
+49,mineral-extraction,copper-mining,COD,16028,Africa
+50,waste,solid-waste-disposal,COD,236771,Africa
+51,fossil-fuel-operations,coal-mining,COL,784843,South America
+52,mineral-extraction,copper-mining,COL,3857,South America
+53,waste,solid-waste-disposal,COL,228445,South America
+54,waste,solid-waste-disposal,CRI,231589,North America
+55,waste,solid-waste-disposal,CUB,172021,North America
+56,mineral-extraction,copper-mining,CYP,0,Europe
+57,waste,solid-waste-disposal,CYP,40544,Europe
+58,fossil-fuel-operations,coal-mining,CZE,875316,Europe
+59,waste,solid-waste-disposal,CZE,13883,Europe
+60,fossil-fuel-operations,coal-mining,DEU,631577,Europe
+61,waste,solid-waste-disposal,DEU,7576,Europe
+62,waste,solid-waste-disposal,DNK,16963,Europe
+63,mineral-extraction,copper-mining,DOM,95233,North America
+64,waste,solid-waste-disposal,DOM,46517,North America
+65,waste,solid-waste-disposal,DZA,65838,Africa
+66,waste,solid-waste-disposal,ECU,242833,South America
+67,fossil-fuel-operations,coal-mining,EGY,4304,Africa
+68,waste,solid-waste-disposal,EGY,688836,Africa
+69,mineral-extraction,copper-mining,ERI,87392,Africa
+70,waste,solid-waste-disposal,ERI,67129,Africa
+71,fossil-fuel-operations,coal-mining,ESP,86096,Europe
+72,mineral-extraction,copper-mining,ESP,94939,Europe
+73,waste,solid-waste-disposal,ESP,32055,Europe
+74,waste,solid-waste-disposal,EST,6755,Europe
+75,fossil-fuel-operations,coal-mining,ETH,156403,Africa
+76,waste,solid-waste-disposal,ETH,234367,Africa
+77,mineral-extraction,copper-mining,FIN,218970,Europe
+78,waste,solid-waste-disposal,FIN,15015,Europe
+79,waste,solid-waste-disposal,FJI,193297,Oceania
+80,waste,solid-waste-disposal,FRA,13739,Europe
+81,waste,solid-waste-disposal,GAB,240271,Africa
+82,fossil-fuel-operations,coal-mining,GBR,65253,Europe
+83,waste,solid-waste-disposal,GBR,22394,Europe
+84,fossil-fuel-operations,coal-mining,GEO,213089,Asia
+85,waste,solid-waste-disposal,GEO,397418,Asia
+86,waste,solid-waste-disposal,GHA,181784,Africa
+87,waste,solid-waste-disposal,GIN,206126,Africa
+88,waste,solid-waste-disposal,GLP,18536,North America
+89,waste,solid-waste-disposal,GMB,154013,Africa
+90,fossil-fuel-operations,coal-mining,GRC,173450,Europe
+91,waste,solid-waste-disposal,GRC,164833,Europe
+92,waste,solid-waste-disposal,GTM,62304,North America
+93,waste,solid-waste-disposal,GUF,9408,South America
+94,waste,solid-waste-disposal,GUY,116969,South America
+95,waste,solid-waste-disposal,HND,505400,North America
+96,waste,solid-waste-disposal,HRV,18620,Europe
+97,waste,solid-waste-disposal,HTI,156098,North America
+98,fossil-fuel-operations,coal-mining,HUN,63577,Europe
+99,waste,solid-waste-disposal,HUN,13458,Europe
+100,fossil-fuel-operations,coal-mining,IDN,62004,Asia
+101,mineral-extraction,copper-mining,IDN,1347929,Asia
+102,waste,solid-waste-disposal,IDN,21271,Asia
+103,fossil-fuel-operations,coal-mining,IND,83849,Asia
+104,mineral-extraction,copper-mining,IND,7775,Asia
+105,waste,solid-waste-disposal,IND,50028,Asia
+106,waste,solid-waste-disposal,IRL,14579,Europe
+107,fossil-fuel-operations,coal-mining,IRN,31400,Asia
+108,mineral-extraction,copper-mining,IRN,168001,Asia
+109,waste,solid-waste-disposal,IRN,242225,Asia
+110,waste,solid-waste-disposal,IRQ,237143,Asia
+111,waste,solid-waste-disposal,ISL,9310,Europe
+112,waste,solid-waste-disposal,ISR,330365,Asia
+113,waste,solid-waste-disposal,ITA,19995,Europe
+114,waste,solid-waste-disposal,JOR,602548,Asia
+115,fossil-fuel-operations,coal-mining,JPN,125845,Asia
+116,waste,solid-waste-disposal,JPN,124695,Asia
+117,fossil-fuel-operations,coal-mining,KAZ,1574316,Asia
+118,mineral-extraction,copper-mining,KAZ,116017,Asia
+119,waste,solid-waste-disposal,KAZ,419222,Asia
+120,waste,solid-waste-disposal,KEN,255341,Africa
+121,fossil-fuel-operations,coal-mining,KGZ,14412,Asia
+122,mineral-extraction,copper-mining,KGZ,19170,Asia
+123,waste,solid-waste-disposal,KGZ,385354,Asia
+124,fossil-fuel-operations,coal-mining,KHM,8483,Asia
+125,waste,solid-waste-disposal,KHM,20906,Asia
+126,fossil-fuel-operations,coal-mining,KOR,226424,Asia
+127,waste,solid-waste-disposal,KOR,787348,Asia
+128,waste,solid-waste-disposal,KWT,383654,Asia
+129,fossil-fuel-operations,coal-mining,LAO,359469,Asia
+130,mineral-extraction,copper-mining,LAO,228517,Asia
+131,waste,solid-waste-disposal,LAO,13748,Asia
+132,waste,solid-waste-disposal,LBN,521808,Asia
+133,mineral-extraction,copper-mining,LBR,0,Africa
+134,waste,solid-waste-disposal,LBY,217570,Africa
+135,waste,solid-waste-disposal,LKA,26530,Asia
+136,waste,solid-waste-disposal,LSO,61842,Africa
+137,waste,solid-waste-disposal,LTU,13174,Europe
+138,waste,solid-waste-disposal,LUX,18928,Europe
+139,waste,solid-waste-disposal,LVA,104340,Europe
+140,waste,solid-waste-disposal,MAR,237150,Africa
+141,waste,solid-waste-disposal,MDA,107508,Europe
+142,waste,solid-waste-disposal,MDG,117720,Africa
+143,fossil-fuel-operations,coal-mining,MEX,199351,North America
+144,mineral-extraction,copper-mining,MEX,168923,North America
+145,waste,solid-waste-disposal,MEX,54173,North America
+146,fossil-fuel-operations,coal-mining,MKD,64436,Europe
+147,mineral-extraction,copper-mining,MKD,91764,Europe
+148,waste,solid-waste-disposal,MKD,398386,Europe
+149,waste,solid-waste-disposal,MLI,112004,Africa
+150,fossil-fuel-operations,coal-mining,MMR,6611,Asia
+151,mineral-extraction,copper-mining,MMR,554719,Asia
+152,waste,solid-waste-disposal,MMR,37940,Asia
+153,fossil-fuel-operations,coal-mining,MNE,37706,Europe
+154,waste,solid-waste-disposal,MNE,372238,Europe
+155,fossil-fuel-operations,coal-mining,MNG,145247,Asia
+156,mineral-extraction,copper-mining,MNG,251848,Asia
+157,waste,solid-waste-disposal,MNG,248963,Asia
+158,fossil-fuel-operations,coal-mining,MOZ,376489,Africa
+159,waste,solid-waste-disposal,MOZ,196563,Africa
+160,mineral-extraction,copper-mining,MRT,67444,Africa
+161,waste,solid-waste-disposal,MRT,448571,Africa
+162,waste,solid-waste-disposal,MUS,631175,Africa
+163,fossil-fuel-operations,coal-mining,MWI,60016,Africa
+164,fossil-fuel-operations,coal-mining,MYS,226239,Asia
+165,waste,solid-waste-disposal,MYS,64944,Asia
+166,mineral-extraction,copper-mining,NAM,700,Africa
+167,waste,solid-waste-disposal,NAM,380999,Africa
+168,waste,solid-waste-disposal,NCL,75038,Oceania
+169,fossil-fuel-operations,coal-mining,NER,5027,Africa
+170,waste,solid-waste-disposal,NER,134696,Africa
+171,fossil-fuel-operations,coal-mining,NGA,2119,Africa
+172,waste,solid-waste-disposal,NGA,55633,Africa
+173,waste,solid-waste-disposal,NIC,151450,North America
+174,waste,solid-waste-disposal,NLD,21985,Europe
+175,fossil-fuel-operations,coal-mining,NOR,38743,Europe
+176,waste,solid-waste-disposal,NOR,185379,Europe
+177,fossil-fuel-operations,coal-mining,NPL,659,Asia
+178,waste,solid-waste-disposal,NPL,39114,Asia
+179,fossil-fuel-operations,coal-mining,NZL,15461,Oceania
+180,waste,solid-waste-disposal,NZL,93913,Oceania
+181,fossil-fuel-operations,coal-mining,PAK,95523,Asia
+182,waste,solid-waste-disposal,PAK,516144,Asia
+183,mineral-extraction,copper-mining,PAN,2095225,North America
+184,waste,solid-waste-disposal,PAN,139245,North America
+185,fossil-fuel-operations,coal-mining,PER,24540,South America
+186,mineral-extraction,copper-mining,PER,211482,South America
+187,waste,solid-waste-disposal,PER,325241,South America
+188,fossil-fuel-operations,coal-mining,PHL,179810,Asia
+189,mineral-extraction,copper-mining,PHL,145590,Asia
+190,waste,solid-waste-disposal,PHL,24519,Asia
+191,mineral-extraction,copper-mining,PNG,215416,Oceania
+192,waste,solid-waste-disposal,PNG,131524,Oceania
+193,fossil-fuel-operations,coal-mining,POL,954031,Europe
+194,mineral-extraction,copper-mining,POL,159740,Europe
+195,waste,solid-waste-disposal,POL,73139,Europe
+196,fossil-fuel-operations,coal-mining,PRK,450403,Asia
+197,mineral-extraction,copper-mining,PRT,19709,Europe
+198,waste,solid-waste-disposal,PRT,60130,Europe
+199,waste,solid-waste-disposal,PRY,197119,South America
+200,waste,solid-waste-disposal,PSE,60898,Asia
+201,waste,solid-waste-disposal,QAT,384872,Asia
+202,waste,solid-waste-disposal,REU,37842,Africa
+203,fossil-fuel-operations,coal-mining,ROU,69505,Europe
+204,mineral-extraction,copper-mining,ROU,59616,Europe
+205,waste,solid-waste-disposal,ROU,39991,Europe
+206,fossil-fuel-operations,coal-mining,RUS,476291,Europe
+207,mineral-extraction,copper-mining,RUS,976897,Europe
+208,waste,solid-waste-disposal,RUS,248117,Europe
+209,mineral-extraction,copper-mining,SAU,26787,Asia
+210,waste,solid-waste-disposal,SAU,303542,Asia
+211,waste,solid-waste-disposal,SEN,96540,Africa
+212,waste,solid-waste-disposal,SGP,1253,Asia
+213,waste,solid-waste-disposal,SJM,174731,Europe
+214,waste,solid-waste-disposal,SLE,25641,Africa
+215,waste,solid-waste-disposal,SLV,463396,North America
+216,fossil-fuel-operations,coal-mining,SRB,123574,Europe
+217,mineral-extraction,copper-mining,SRB,90774,Europe
+218,waste,solid-waste-disposal,SRB,85149,Europe
+219,waste,solid-waste-disposal,SSD,223306,Africa
+220,waste,solid-waste-disposal,SUR,433908,South America
+221,fossil-fuel-operations,coal-mining,SVK,135743,Europe
+222,waste,solid-waste-disposal,SVK,11011,Europe
+223,fossil-fuel-operations,coal-mining,SVN,438339,Europe
+224,waste,solid-waste-disposal,SVN,12080,Europe
+225,mineral-extraction,copper-mining,SWE,86780,Europe
+226,waste,solid-waste-disposal,SWE,11065,Europe
+227,fossil-fuel-operations,coal-mining,SWZ,75727,Africa
+228,waste,solid-waste-disposal,TCD,137546,Africa
+229,waste,solid-waste-disposal,TGO,164024,Africa
+230,fossil-fuel-operations,coal-mining,THA,2007875,Asia
+231,waste,solid-waste-disposal,THA,10450,Asia
+232,fossil-fuel-operations,coal-mining,TJK,63703,Asia
+233,waste,solid-waste-disposal,TJK,141970,Asia
+234,waste,solid-waste-disposal,TLS,61161,Asia
+235,waste,solid-waste-disposal,TON,99606,Oceania
+236,waste,solid-waste-disposal,TTO,456188,North America
+237,waste,solid-waste-disposal,TUN,219961,Africa
+238,fossil-fuel-operations,coal-mining,TUR,89753,Asia
+239,mineral-extraction,copper-mining,TUR,126580,Asia
+240,waste,solid-waste-disposal,TUR,187410,Asia
+241,waste,solid-waste-disposal,TUV,338297,Oceania
+242,waste,solid-waste-disposal,TWN,61169,Asia
+243,fossil-fuel-operations,coal-mining,TZA,106049,Africa
+244,mineral-extraction,copper-mining,TZA,16476,Africa
+245,waste,solid-waste-disposal,TZA,16370,Africa
+246,waste,solid-waste-disposal,UGA,46781,Africa
+247,fossil-fuel-operations,coal-mining,UKR,614823,Europe
+248,waste,solid-waste-disposal,UKR,194959,Europe
+249,waste,solid-waste-disposal,URY,134826,South America
+250,fossil-fuel-operations,coal-mining,USA,179970,North America
+251,mineral-extraction,copper-mining,USA,213537,North America
+252,waste,solid-waste-disposal,USA,79986,North America
+253,fossil-fuel-operations,coal-mining,UZB,87766,Asia
+254,mineral-extraction,copper-mining,UZB,918675,Asia
+255,waste,solid-waste-disposal,UZB,328260,Asia
+256,fossil-fuel-operations,coal-mining,VEN,630162,South America
+257,waste,solid-waste-disposal,VEN,50675,South America
+258,fossil-fuel-operations,coal-mining,VNM,354909,Asia
+259,waste,solid-waste-disposal,VNM,13904,Asia
+260,waste,solid-waste-disposal,VUT,72357,Oceania
+261,fossil-fuel-operations,coal-mining,XKX,203112,Europe
+262,waste,solid-waste-disposal,XKX,331478,Europe
+263,waste,solid-waste-disposal,YEM,235548,Asia
+264,fossil-fuel-operations,coal-mining,ZAF,469091,Africa
+265,mineral-extraction,copper-mining,ZAF,164060,Africa
+266,waste,solid-waste-disposal,ZAF,425269,Africa
+267,fossil-fuel-operations,coal-mining,ZMB,19026,Africa
+268,mineral-extraction,copper-mining,ZMB,195924,Africa
+269,waste,solid-waste-disposal,ZMB,140083,Africa
+270,fossil-fuel-operations,coal-mining,ZWE,124552,Africa
+271,mineral-extraction,copper-mining,ZWE,110824,Africa
+272,waste,solid-waste-disposal,ZWE,410960,Africa
