@@ -3,11 +3,8 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 
-fpath0 = '/Users/tingso/Dropbox/Projects/Business/ClimateTRACE/'
-
 # Load your DataFrame
 # Replace with your actual path and file name
-fpath = fpath0 + 'Program/Streamlit/ct_map/'
 fname = 'ct_treemap_data.csv'
 df = pd.read_csv(fname)
 
