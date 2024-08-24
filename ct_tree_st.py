@@ -7,6 +7,7 @@ import os
 # Load the CSV files from the current directory
 csv_directory = '.'  # Current directory
 csv_files = [f for f in os.listdir(csv_directory) if f.endswith('.csv')]
+csv_files = sorted(csv_files, reverse=True)
 
 # Ensure there's at least one CSV file
 if not csv_files:
@@ -14,7 +15,7 @@ if not csv_files:
 else:
     # Initialize session state variables if they don't exist
     if 'selected_file' not in st.session_state:
-        st.session_state.selected_file = csv_files[0]
+        st.session_state.selected_file = csv_files[1] #2022
         st.session_state.year = st.session_state.selected_file.split('.')[0].split('_')[-1]
     if 'selected_country' not in st.session_state:
         st.session_state.selected_country = None
@@ -46,38 +47,6 @@ else:
         return df
 
     df = load_data(os.path.join(csv_directory, selected_file))
-
-    # def rename(x):
-    #     a = x.split('-')
-    #     if len(a) > 1:
-    #         return a[0] + '-' + ''.join([b[0] for b in a[1:]])
-    #     else:
-    #         return a[0]
-
-    # df['subsector'] = df['subsector'].apply(rename)
-    # df['sector'] = df['sector'].apply(rename)
-
-    def aggregate_small_categories(data, path_column, value_column, threshold=0.01):
-        data = data.copy()
-
-        fds_columns = data.columns.tolist()
-        # fds_agg = [x for x in fds_columns if x not in path_column + [value_column] + ['continent_ct']]
-        
-        # # # Calculate the total value
-        # data['path_total'] = data.groupby(path_column)[value_column].transform('sum')
-        # data['percent_of_total'] = data[value_column] / data['path_total']
-        
-        # data.loc[data['percent_of_total'] < threshold, fds_agg[-1]] = 'Other'
-        # aggregated_data = data.groupby(['continent_ct'] + path_column + fds_agg).agg({value_column: 'sum'}).reset_index()
-
-        # st.write('agg values', aggregated_data)
-        aggregated_data = data[fds_columns]
-
-        return aggregated_data
-
-    # Limit the number of nodes by aggregating smaller categories into "Other"
-    # threshold = st.slider("Aggregate categories smaller than (%)", min_value=0.01, max_value=0.10, value=0.05, step=0.01)
-    threshold = 0.01
 
     # Formatting function for generating a treemap figure
     def generate_fig(data, path, value, color):
@@ -118,39 +87,32 @@ else:
 
     # Section 1: Treemap by Sector
     st.header("Climate TRACE " + st.session_state.year)
-    df_agg = aggregate_small_categories(df, ['sector','subsector'], 'co2e_100yr', threshold)
-
-    # st.write('agg values', df_agg)
-
-    fig_all = generate_fig(df_agg, ['sector'], 'co2e_100yr', None)
+    fig_all = generate_fig(df, ['sector','subsector'], 'co2e_100yr', None)
     st.plotly_chart(fig_all, use_container_width=True)
 
     # Section 2: Treemap by Sector/Country
     st.header("Climate TRACE Sector " + st.session_state.year)
     sector_list = df['sector'].unique()
-    # selected_sector = st.selectbox("Select a Sector", options=sector_list, index=0 if st.session_state.selected_sector is None else sector_list.tolist().index(st.session_state.selected_sector))
-    selected_sector = st.selectbox("Select a Sector", options=sector_list)
+    selected_sector = st.selectbox("Select a Sector", options=sorted(sector_list))
 
     if selected_sector != st.session_state.selected_sector:
         st.session_state.selected_sector = selected_sector
 
     filtered_df_sector = df[df['sector'] == selected_sector]
-    df_agg = aggregate_small_categories(filtered_df_sector, ['subsector','iso3_country'], 'co2e_100yr', threshold)
-    fig_sector = generate_fig(df_agg, ['subsector','iso3_country'], 'co2e_100yr', 'continent_ct')
+    fig_sector = generate_fig(filtered_df_sector, ['subsector','iso3_country'], 'co2e_100yr', 'continent_ct')
     st.plotly_chart(fig_sector, use_container_width=True)
 
     # Section 3: Treemap by Country/Sector
     st.header("Climate TRACE Country " + st.session_state.year)
     country_list = df['iso3_country'].unique()
     # selected_country = st.selectbox("Select a Country", options=country_list, index=0 if st.session_state.selected_country is None else country_list.tolist().index(st.session_state.selected_country))
-    selected_country = st.selectbox("Select a Country", options=country_list)
+    selected_country = st.selectbox("Select a Country", options=sorted(country_list))
 
     if selected_country != st.session_state.selected_country:
         st.session_state.selected_country = selected_country
 
     filtered_df_country = df[df['iso3_country'] == selected_country]
-    df_agg = aggregate_small_categories(filtered_df_country, ['sector'], 'co2e_100yr', threshold)
-    fig_country = generate_fig(df_agg, ['sector'], 'co2e_100yr', None)
+    fig_country = generate_fig(filtered_df_country, ['sector','subsector'], 'co2e_100yr', None)
     st.plotly_chart(fig_country, use_container_width=True)
 
 # import pandas as pd
