@@ -1,5 +1,6 @@
 import streamlit as st
 import plotly.express as px
+import plotly.graph_objects as go
 import pandas as pd
 import os
 
@@ -14,6 +15,7 @@ else:
     # Initialize session state variables if they don't exist
     if 'selected_file' not in st.session_state:
         st.session_state.selected_file = csv_files[0]
+        st.session_state.year = st.session_state.selected_file.split('.')[0].split('_')[-1]
     if 'selected_country' not in st.session_state:
         st.session_state.selected_country = None
     if 'selected_sector' not in st.session_state:
@@ -25,24 +27,83 @@ else:
     # If a new file is selected, update the session state and reset selections
     if selected_file != st.session_state.selected_file:
         st.session_state.selected_file = selected_file
+        st.session_state.year = selected_file.split('.')[0].split('_')[-1]
         st.session_state.selected_country = None
         st.session_state.selected_sector = None
-        st.experimental_rerun()
+        st.rerun()
 
     # Load the DataFrame
-    df = pd.read_csv(os.path.join(csv_directory, selected_file))
+    # df = pd.read_csv(os.path.join(csv_directory, selected_file))
+    # df = pd.read_csv('ct_treemap_data.csv')
+
+    def load_data(file_path):
+        df = pd.read_csv(file_path)
+        # # Optimize data types
+        # df['sector'] = df['sector'].astype('category')
+        # df['subsector'] = df['subsector'].astype('category')
+        # df['iso3_country'] = df['iso3_country'].astype('category')
+        # df['continent_ct'] = df['continent_ct'].astype('category')
+        return df
+
+    df = load_data(os.path.join(csv_directory, selected_file))
+
+    def rename(x):
+        a = x.split('-')
+        if len(a) > 1:
+            return a[0] + '-' + ''.join([b[0] for b in a[1:]])
+        else:
+            return a[0]
+
+    df['subsector'] = df['subsector'].apply(rename)
+    df['sector'] = df['sector'].apply(rename)
+
+    def aggregate_small_categories(data, path_column, value_column, threshold=0.01):
+        data = data.copy()
+
+        fds_columns = data.columns.tolist()
+        # fds_agg = [x for x in fds_columns if x not in path_column + [value_column] + ['continent_ct']]
+        
+        # # # Calculate the total value
+        # data['path_total'] = data.groupby(path_column)[value_column].transform('sum')
+        # data['percent_of_total'] = data[value_column] / data['path_total']
+        
+        # data.loc[data['percent_of_total'] < threshold, fds_agg[-1]] = 'Other'
+        # aggregated_data = data.groupby(['continent_ct'] + path_column + fds_agg).agg({value_column: 'sum'}).reset_index()
+
+        # st.write('agg values', aggregated_data)
+        aggregated_data = data[fds_columns]
+
+        return aggregated_data
+
+    # Limit the number of nodes by aggregating smaller categories into "Other"
+    # threshold = st.slider("Aggregate categories smaller than (%)", min_value=0.01, max_value=0.10, value=0.05, step=0.01)
+    threshold = 0.01
 
     # Formatting function for generating a treemap figure
     def generate_fig(data, path, value, color):
+        total_value = data['co2e_100yr'].sum()
+
         fig = px.treemap(data, path=path, values=value, color=color,
-                         title=f'Treemap for {st.session_state.selected_file}')
+                         title='Treemap for Climate TRACE data')
 
         fig.update_layout(
             margin=dict(t=0, l=0, b=0, r=0),  # Remove margins around the treemap
             paper_bgcolor='white',  # Background color of the paper
             uniformtext_minsize=10,  # Minimum text size for labels
             uniformtext_mode='hide',  # Hide text if it doesn't fit
-            clickmode='event+select'
+            clickmode='event+select',
+            annotations=[
+                go.layout.Annotation(
+                    text=f"Total CO2e (100 yr): {total_value:,}",
+                    showarrow=False,
+                    xref="paper",
+                    yref="paper",
+                    x=0.5,
+                    y=1.005,
+                    font=dict(size=14, color="black"),
+                    align="center"
+                )
+            ]
         )
         fig.update_traces(
             hovertemplate='%{label}<br>Value: %{value}<br>Percent of Total: %{percent.entry:.2%}',
@@ -52,31 +113,44 @@ else:
                 line=dict(width=0)  # Reduce outline width
             )
         )
+
         return fig
 
     # Section 1: Treemap by Sector
-    st.header("Treemap by Sector")
-    fig_all = generate_fig(df, ['sector', 'subsector'], 'co2e_100yr', 'continent_ct')
+    st.header("Climate TRACE Overview " + st.session_state.year)
+    df_agg = aggregate_small_categories(df, ['sector','subsector'], 'co2e_100yr', threshold)
+
+    # st.write('agg values', df_agg)
+
+    fig_all = generate_fig(df_agg, ['sector'], 'co2e_100yr', None)
     st.plotly_chart(fig_all, use_container_width=True)
 
     # Section 2: Treemap by Sector/Country
-    st.header("Treemap by Sector/Country")
+    st.header("Climate TRACE Sector " + st.session_state.year)
     sector_list = df['sector'].unique()
-    selected_sector = st.selectbox("Select a Sector", options=sector_list, index=0 if st.session_state.selected_sector is None else sector_list.tolist().index(st.session_state.selected_sector))
-    st.session_state.selected_sector = selected_sector
+    # selected_sector = st.selectbox("Select a Sector", options=sector_list, index=0 if st.session_state.selected_sector is None else sector_list.tolist().index(st.session_state.selected_sector))
+    selected_sector = st.selectbox("Select a Sector", options=sector_list)
+
+    if selected_sector != st.session_state.selected_sector:
+        st.session_state.selected_sector = selected_sector
 
     filtered_df_sector = df[df['sector'] == selected_sector]
-    fig_sector = generate_fig(filtered_df_sector, ['sector', 'subsector', 'iso3_country'], 'co2e_100yr', 'continent_ct')
+    df_agg = aggregate_small_categories(filtered_df_sector, ['subsector','iso3_country'], 'co2e_100yr', threshold)
+    fig_sector = generate_fig(df_agg, ['subsector','iso3_country'], 'co2e_100yr', 'continent_ct')
     st.plotly_chart(fig_sector, use_container_width=True)
 
     # Section 3: Treemap by Country/Sector
-    st.header("Treemap by Country/Sector")
+    st.header("Climate TRACE Country " + st.session_state.year)
     country_list = df['iso3_country'].unique()
-    selected_country = st.selectbox("Select a Country", options=country_list, index=0 if st.session_state.selected_country is None else country_list.tolist().index(st.session_state.selected_country))
-    st.session_state.selected_country = selected_country
+    # selected_country = st.selectbox("Select a Country", options=country_list, index=0 if st.session_state.selected_country is None else country_list.tolist().index(st.session_state.selected_country))
+    selected_country = st.selectbox("Select a Country", options=country_list)
+
+    if selected_country != st.session_state.selected_country:
+        st.session_state.selected_country = selected_country
 
     filtered_df_country = df[df['iso3_country'] == selected_country]
-    fig_country = generate_fig(filtered_df_country, ['iso3_country', 'sector', 'subsector'], 'co2e_100yr', 'continent_ct')
+    df_agg = aggregate_small_categories(filtered_df_country, ['sector'], 'co2e_100yr', threshold)
+    fig_country = generate_fig(df_agg, ['sector'], 'co2e_100yr', None)
     st.plotly_chart(fig_country, use_container_width=True)
 
 # import pandas as pd
