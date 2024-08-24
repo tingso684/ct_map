@@ -47,15 +47,15 @@ else:
 
     df = load_data(os.path.join(csv_directory, selected_file))
 
-    def rename(x):
-        a = x.split('-')
-        if len(a) > 1:
-            return a[0] + '-' + ''.join([b[0] for b in a[1:]])
-        else:
-            return a[0]
+    # def rename(x):
+    #     a = x.split('-')
+    #     if len(a) > 1:
+    #         return a[0] + '-' + ''.join([b[0] for b in a[1:]])
+    #     else:
+    #         return a[0]
 
-    df['subsector'] = df['subsector'].apply(rename)
-    df['sector'] = df['sector'].apply(rename)
+    # df['subsector'] = df['subsector'].apply(rename)
+    # df['sector'] = df['sector'].apply(rename)
 
     def aggregate_small_categories(data, path_column, value_column, threshold=0.01):
         data = data.copy()
@@ -117,7 +117,7 @@ else:
         return fig
 
     # Section 1: Treemap by Sector
-    st.header("Climate TRACE Overview " + st.session_state.year)
+    st.header("Climate TRACE " + st.session_state.year)
     df_agg = aggregate_small_categories(df, ['sector','subsector'], 'co2e_100yr', threshold)
 
     # st.write('agg values', df_agg)
